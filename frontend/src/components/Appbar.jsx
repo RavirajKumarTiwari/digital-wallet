@@ -1,20 +1,30 @@
-export const Appbar = () => {
+import React from "react";
+import { Wallet, Bell, Settings, User } from "lucide-react";
+
+export function Appbar() {
     return (
-        <div className="shadow h-14 flex justify-between">
-            <div className="flex flex-col justify-center h-full ml-4">
-                PayTM Clone
-            </div>
-            <div className="flex">
-                <div className="flex flex-col justify-center h-full mr-4">
-                    Hello
-                </div>
-                <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
-                    <div className="flex flex-col justify-center h-full text-xl">
-                        U
+        <header className="bg-white shadow-sm">
+            <div className="max-w-auto mx-auto px-4 sm:px-6 lg:px-0">
+                <div className="flex justify-between items-center h-16">
+                    <div className="flex items-center">
+                        <Wallet className="h-8 w-8 text-blue-600" />
+                        <span className="ml-2 text-xl font-bold text-gray-900">
+                            PayWallet
+                        </span>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                        <button className="p-2 rounded-full hover:bg-gray-100">
+                            <Bell className="h-6 w-6 text-gray-600" />
+                        </button>
+                        <button className="p-2 rounded-full hover:bg-gray-100">
+                            <Settings className="h-6 w-6 text-gray-600" />
+                        </button>
+                        <button className="flex items-center space-x-2 p-2 rounded-full hover:bg-gray-100">
+                            <User className="h-6 w-6 text-gray-600" />
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
-

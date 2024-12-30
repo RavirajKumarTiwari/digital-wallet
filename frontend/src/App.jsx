@@ -7,12 +7,8 @@ import { SendMoney } from "./pages/SendMoney";
 function App() {
     console.log("App.jsx");
     return (
-        <>
-            <div>
-                <div className="flex h-14 bg-blue-400 justify-center">
-                    <h1 className="m-2 p-2 text-lg font-bold ">Banking Application</h1>
-                </div>
-            </div>
+        <div className="min-h-screen bg-gray-50">
+            <h1>testing</h1>
             <BrowserRouter>
                 <Routes>
                     <Route path="/signup" element={<Signup />} />
@@ -21,7 +17,7 @@ function App() {
                     <Route path="/send" element={<SendMoney />} />
                 </Routes>
             </BrowserRouter>
-        </>
+        </div>
     );
 }
 
