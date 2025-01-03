@@ -8,7 +8,6 @@ function App() {
     console.log("App.jsx");
     return (
         <div className="min-h-screen bg-gray-50">
-            <h1>testing</h1>
             <BrowserRouter>
                 <Routes>
                     <Route path="/signup" element={<Signup />} />

@@ -7,6 +7,7 @@ export const Users = () => {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 
+    // add debouncing
     useEffect(() => {
         axios
             .get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
@@ -30,7 +31,7 @@ export const Users = () => {
             </div>
             <div>
                 {users.map((user) => (
-                    <User user={user} />
+                    <User user={user} key={""} />
                 ))}
             </div>
         </>
@@ -60,7 +61,7 @@ function User({ user }) {
                 <Button
                     onClick={(e) => {
                         navigate(
-                            "/send?id=" + user._id + "&name=" + user.firstName
+                            "/send?id=" + user.id + "&name=" + user.firstName
                         );
                     }}
                     label={"Send Money"}

@@ -20,17 +20,17 @@ export const SendMoney = () => {
                     <div className="p-6">
                         <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
-                                <span class="text-2xl text-white">
+                                <span className="text-2xl text-white">
                                     {name[0].toUpperCase()}
                                 </span>
                             </div>
-                            <h3 class="text-2xl font-semibold">{name}</h3>
+                            <h3 className="text-2xl font-semibold">{name}</h3>
                         </div>
                         <div className="space-y-4">
-                            <div class="space-y-2">
+                            <div className="space-y-2">
                                 <label
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    for="amount"
+                                    htmlFor="amount"
                                 >
                                     Amount (in Rs)
                                 </label>

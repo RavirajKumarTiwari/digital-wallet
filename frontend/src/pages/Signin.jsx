@@ -3,8 +3,39 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const signin = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/user/signin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: email,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+            if (data.token) {
+                localStorage.setItem("token", data.token);
+                navigate("/dashboard");
+            } else {
+                alert("Invalid credentials");
+            }
+        } catch (error) {
+            alert("Error signing in");
+        }
+    };
+
     return (
         <div className="bg-slate-300 h-screen flex justify-center">
             <div className="flex flex-col justify-center">
@@ -14,12 +45,18 @@ export const Signin = () => {
                         label={"Enter your credentials to access your account"}
                     />
                     <InputBox
-                        placeholder="harkirat@gmail.com"
+                        placeholder="youremail@gmail.com"
                         label={"Email"}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
-                    <InputBox placeholder="123456" label={"Password"} />
+                    <InputBox 
+                        placeholder="123456" 
+                        label={"Password"} 
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <div className="pt-4">
-                        <Button label={"Sign in"} />
+                        <Button label={"Sign in"} onClick={signin} />
                     </div>
                     <BottomWarning
                         label={"Don't have an account?"}
